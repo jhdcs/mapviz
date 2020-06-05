@@ -69,18 +69,6 @@ find_package(GLEW REQUIRED)
 # Fix conflict between Boost signals used by tf and QT signals used by mapviz
 add_definitions(-DQT_NO_KEYWORDS)
 
-# Need to include the current dir to include the results of building Qt UI files
-target_include_directories(rqt_${PROJECT_NAME} PUBLIC include)
-target_include_directories(rqt_${PROJECT_NAME} SYSTEM PUBLIC
-  ${Qt_INCLUDE_DIRS}
-  ${OpenGL_INCLUDE_DIR}
-  ${GLEW_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-  ${YamlCpp_INCLUDE_DIR})
-target_include_directories(rqt_${PROJECT_NAME} PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR})
-
 
 # Qt UI files
 set(UI_FILES
@@ -126,6 +114,19 @@ add_library(rqt_${PROJECT_NAME}
   ${SRC_FILES}
   ${RCC_SRCS}
 )
+
+# Need to include the current dir to include the results of building Qt UI files
+target_include_directories(rqt_${PROJECT_NAME} PUBLIC include)
+target_include_directories(rqt_${PROJECT_NAME} SYSTEM PUBLIC
+  ${Qt_INCLUDE_DIRS}
+  ${OpenGL_INCLUDE_DIR}
+  ${GLEW_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+  ${YamlCpp_INCLUDE_DIR})
+target_include_directories(rqt_${PROJECT_NAME} PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR})
+
 target_compile_definitions(rqt_${PROJECT_NAME}
   PRIVATE
     USE_NEW_TF2_TOMSG=${USE_NEW_TF2_TOMSG}
