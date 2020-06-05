@@ -70,15 +70,6 @@ find_package(GLEW REQUIRED)
 add_definitions(-DQT_NO_KEYWORDS)
 
 # Need to include the current dir to include the results of building Qt UI files
-# set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# include_directories(include)
-# include_directories(SYSTEM
-#   ${Qt_INCLUDE_DIRS}
-#   ${OpenGL_INCLUDE_DIR}
-#   ${GLEW_INCLUDE_DIRS}
-#   ${OpenCV_INCLUDE_DIRS}
-#   ${YamlCpp_INCLUDE_DIR}
-# )
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PUBLIC
   ${Qt_INCLUDE_DIRS}
