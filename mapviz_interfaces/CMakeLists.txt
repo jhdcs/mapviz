@@ -4,7 +4,8 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
 
-project(mapviz_interfaces)
+project(mapviz_interfaces VERSION 1.2.0
+  LANGUAGES CXX)
 
 find_package(ament_cmake REQUIRED)
 find_package(marti_common_msgs REQUIRED)
